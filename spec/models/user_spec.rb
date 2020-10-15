@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'creation' do
-    subject(:user) { described_class.create(email: "email@email.com", 
-                                            password: "password",
-                                            first_name: "Harry",
-                                            last_name: "Harrison") }
+  subject(:user) { described_class.create(email: "email@email.com", 
+                                          password: "password",
+                                          first_name: "Harry",
+                                          last_name: "Harrison") }
 
+  describe 'creation' do
     context 'when valid' do
       it 'is created with valid attributes' do
         expect(user).to be_valid
