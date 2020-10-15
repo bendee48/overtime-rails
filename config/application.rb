@@ -17,8 +17,8 @@ module Overtime
     # the framework and any gems in your application.
 
     # Auto load Hirb
-    console do
-      Hirb.enable
-    end
+    # console do
+    #   Hirb.enable
+    # end
   end
 end
