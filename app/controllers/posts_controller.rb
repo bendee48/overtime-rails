@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :get_post, only: [:show]
+
   def index
   end
 
@@ -8,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
+    post.user_id = current_user.id
 
     if post.save
       flash.notice ="Post created."
@@ -19,12 +22,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   private
 
   def post_params
     params.require(:post).permit(:date, :rationale)
+  end
+
+  def get_post
+    @post = Post.find(params[:id])
   end
 end
