@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { described_class.create(email: "email@email.com", 
+  subject(:user) { described_class.create!(email: "email@email.com", 
                                           password: "password",
                                           first_name: "Harry",
                                           last_name: "Harrison") }
@@ -19,6 +19,12 @@ RSpec.describe User, type: :model do
         user.last_name = nil
         expect(user).to_not be_valid
       end
+    end
+  end
+
+  describe '#full_name' do
+    it "returns user's full name" do
+      expect(user.full_name).to eql "HARRISON, Harry"
     end
   end
 end
