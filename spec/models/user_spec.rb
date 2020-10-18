@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject(:user) { described_class.create!(email: "email@email.com", 
-                                          password: "password",
-                                          first_name: "Harry",
-                                          last_name: "Harrison") }
+  subject(:user) { build_stubbed(:user) }
 
   describe 'creation' do
     context 'when valid' do
@@ -24,7 +21,7 @@ RSpec.describe User, type: :model do
 
   describe '#full_name' do
     it "returns user's full name" do
-      expect(user.full_name).to eql "HARRISON, Harry"
+      expect(user.full_name).to eql "DOE, John"
     end
   end
 end

@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Navigation', type: :feature do
-  let(:user) { User.create(email: "email@email.com", 
-                           password: "password",
-                           first_name: "Harry",
-                           last_name: "Harrison") }
+  let(:user) { create(:user) }
 
   before do
     login_as(user, scope: :user)
@@ -22,10 +19,10 @@ RSpec.describe 'Navigation', type: :feature do
     end
 
     it 'displays all posts' do
-      post1 = Post.create!(date: Date.today, rationale: "post 1", user_id: user.id)
-      post2 = Post.create!(date: Date.today, rationale: "post 2", user_id: user.id)
+      post1 = create(:post)
+      post2 = create(:post, rationale: "Some more content")
       visit posts_path
-      expect(page).to have_content(/post 1|post 2/)
+      expect(page).to have_content(/Some content|Some more content/)
     end
   end
 

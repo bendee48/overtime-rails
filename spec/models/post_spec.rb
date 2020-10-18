@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create!(email: "email@email.com", 
-                            password: "password",
-                            first_name: "Harry",
-                            last_name: "Harrison") }
-  subject(:post) { described_class.create(date: Date.today, rationale: "hi there", user_id: user.id) }
+  let(:user) { create(:user) }
+  subject(:post) { build_stubbed(:post)}
 
   describe 'creation' do
     context 'when valid' do
