@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :get_post, only: [:show]
 
   def index
+    @posts = Post.all
   end
 
   def new
