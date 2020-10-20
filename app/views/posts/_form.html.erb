@@ -1,0 +1,9 @@
+<%= form_with model: @post, local: true do |f| %>
+  <%= f.label 'Date' %>
+  <%= f.date_field :date %><br />
+
+  <%= f.label 'Rationale' %>
+  <%= f.text_area :rationale %>
+
+  <%= f.submit 'Submit' %>
+<% end %>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:show]
+  before_action :get_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.all
@@ -23,6 +23,19 @@ class PostsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      flash.notice = "Post successfully updated"
+      redirect_to @post
+    else
+      flash.now.alert = "Something went wrong"
+      render :edit
+    end
   end
 
   private
