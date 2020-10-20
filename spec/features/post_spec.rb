@@ -78,4 +78,13 @@ RSpec.describe 'Navigation', type: :feature do
       expect(page).to have_content 'edited content'
     end
   end
+
+  describe '#delete' do
+    it 'can be deleted' do
+      post = create(:post)
+      visit posts_path
+      click_link "delete-from-index-#{post.id}"
+      expect(page.status_code).to eql 200
+    end
+  end
 end
