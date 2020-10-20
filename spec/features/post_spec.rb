@@ -52,6 +52,11 @@ RSpec.describe 'Navigation', type: :feature do
 
       expect(User.last.posts.last.rationale).to eql 'associated user'
     end
+
+    it 'has a link in the navbar' do
+      click_link 'new-post-nav'
+      expect(page.status_code).to eql 200
+    end
   end
 
   describe '#edit' do
