@@ -14,10 +14,9 @@ class PostsController < ApplicationController
     post.user_id = current_user.id
 
     if post.save
-      flash.notice ="Post created."
+      sweetalert('Your post has been added.', 'Post Created', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
       redirect_to post
     else
-      flash.now.alert = "Something went wrong"
       render :new 
     end
   end
@@ -30,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash.notice = "Post successfully updated"
+      sweetalert('Your post has been updated.', 'Post Updated', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
       redirect_to @post
     else
       flash.now.alert = "Something went wrong"
@@ -40,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      flash.notice = "Post deleted"
+      sweetalert('Your post has been deleted.', 'Post Deleted', timer: 3000, position: 'top-end', toast: true, icon: 'error', background: '#EEEEFF')
       redirect_to posts_path
     else
       flash.now.alert = "Something went wrong"
