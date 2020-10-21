@@ -2,6 +2,14 @@
   <div class="col-md-2"></div>
     <div class="col-md-8">
       <%= form_with model: @post, local: true do |f| %>
+        <% if @post.errors.any? %>
+          <% @post.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger" role="alert">
+              <%= msg %>
+            </div>
+          <% end %>
+        <% end %>
+
         <div class="form-group">
           <%= f.label 'Date' %>
           <%= f.date_field :date,  class: "form-control" %><br />
