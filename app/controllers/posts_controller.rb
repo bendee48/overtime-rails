@@ -10,12 +10,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
-    if post.save
+    if @post.save
       sweetalert('Your post has been added.', 'Post Created', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
-      redirect_to post
+      redirect_to @post
     else
       render :new 
     end
