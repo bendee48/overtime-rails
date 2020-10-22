@@ -34,7 +34,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   posts
-  id
   email
   ].freeze
 
