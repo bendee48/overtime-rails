@@ -10,6 +10,7 @@ class PostDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo.with_options(searchable: true, searchable_fields: ['id']),
     id: Field::Number,
+    status: Field::Select.with_options(searchable: true, collection: [:submitted, :approved, :rejected]),
     date: Field::Date.with_options(searchable: true),
     rationale: Field::Text.with_options(searchable: true),
     created_at: Field::DateTime,
@@ -24,6 +25,7 @@ class PostDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   user
   id
+  status
   date
   rationale
   ].freeze
@@ -33,6 +35,7 @@ class PostDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   user
   id
+  status
   date
   rationale
   created_at
@@ -46,6 +49,7 @@ class PostDashboard < Administrate::BaseDashboard
   user
   date
   rationale
+  status
   ].freeze
 
   # COLLECTION_FILTERS

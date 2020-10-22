@@ -8,6 +8,9 @@
 user = User.create!(first_name: 'Bob', last_name: 'Holness', email: 'test@email.com', password: 'password')
 puts '1 User created.'
 
+admin_user = AdminUser.create(first_name: 'Admin', last_name: 'User', email: 'admin@email.com', password: 'password')
+puts '1 Admin User created'
+
 20.times do |num|
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user.id)
 end
