@@ -60,7 +60,7 @@ RSpec.describe 'Navigation', type: :feature do
   end
 
   describe '#edit' do
-    let!(:post) { create(:post) }
+    let!(:post) { create(:post, user_id: user.id) }
 
     it 'can be edited by clicking the edit on index page' do
       visit posts_path
@@ -76,6 +76,14 @@ RSpec.describe 'Navigation', type: :feature do
       click_on 'Submit'
 
       expect(page).to have_content 'edited content'
+    end
+
+    it 'can only be edited by owner or admin' do
+      logout user
+      user2 = create(:user, first_name: "Second", last_name: "User")
+      login_as(user2, scope: :user)
+      visit edit_post_path(post)
+      expect(current_path).to eql posts_path
     end
   end
 
