@@ -25,9 +25,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
 
   def update
+    authorize @post
+    
     if @post.update(post_params)
       sweetalert('Your post has been updated.', 'Post Updated', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
       redirect_to @post

@@ -5,14 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create!(first_name: 'Bob', last_name: 'Holness', email: 'test@email.com', password: 'password')
-puts '1 User created.'
+user1 = User.create!(first_name: 'Bob', last_name: 'Holness', email: 'test@email.com', password: 'password')
+user2 = User.create!(first_name: 'Emma', last_name: 'Quill', email: 'emma@email.com', password: 'password')
+puts '2 Users created.'
 
-admin_user = AdminUser.create(first_name: 'Admin', last_name: 'User', email: 'admin@email.com', password: 'password')
+AdminUser.create(first_name: 'Admin', last_name: 'User', email: 'admin@email.com', password: 'password')
 puts '1 Admin User created'
 
-20.times do |num|
-  Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user.id)
+10.times do |num|
+  Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user1.id)
+  Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id)
 end
 
 puts '20 posts created.'
