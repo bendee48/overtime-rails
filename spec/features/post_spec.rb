@@ -19,10 +19,19 @@ RSpec.describe 'Navigation', type: :feature do
     end
 
     it 'displays all posts' do
-      post1 = create(:post)
-      post2 = create(:post, rationale: "Some more content")
+      post1 = create(:post, user_id: user.id)
+      post2 = create(:post, rationale: "Some more content", user_id: user.id)
       visit posts_path
       expect(page).to have_content(/Some content|Some more content/)
+    end
+
+    it 'only displays posts created by current user' do
+      user2 = create(:second_user)
+      post1 = create(:post, user_id: user.id)
+      post2 = create(:post, user_id: user2.id)
+      visit posts_path
+      expect(page).to have_content(/DOE, John/)
+      expect(page).to_not have_content(/USER, Second/)
     end
   end
 
@@ -89,7 +98,7 @@ RSpec.describe 'Navigation', type: :feature do
 
   describe '#delete' do
     it 'can be deleted' do
-      post = create(:post)
+      post = create(:post, user_id: user.id)
       visit posts_path
       click_link "delete-from-index-#{post.id}"
       expect(page.status_code).to eql 200
