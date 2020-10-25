@@ -12,9 +12,15 @@ RSpec.describe Post, type: :model do
     end
 
     context 'when invalid' do
-      it "doesn't create a post without a date and rationale" do
+      it "doesn't create a post without a date, rationale and overtime request" do
         post.date = nil
         post.rationale = nil
+        post.overtime_request = nil
+        expect(post).to_not be_valid
+      end
+
+      it "rejects a post with 0 overtime hours" do
+        post.overtime_request = 0.0
         expect(post).to_not be_valid
       end
     end
