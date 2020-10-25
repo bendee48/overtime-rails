@@ -8,11 +8,12 @@ class PostDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo.with_options(searchable: true, searchable_fields: ['first_name', 'last_name']),
     id: Field::Number,
+    user: Field::BelongsTo.with_options(searchable: true, searchable_fields: ['first_name', 'last_name']),
     status: Field::Select.with_options(searchable: true, collection: [:submitted, :approved, :rejected]),
     date: Field::Date.with_options(searchable: true),
     rationale: Field::Text.with_options(searchable: true),
+    overtime_request: Field::Number.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,18 +24,19 @@ class PostDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  user
   id
+  user
   status
   date
+  overtime_request
   rationale
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  user
   id
+  user
   status
   date
   rationale

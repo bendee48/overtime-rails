@@ -11,12 +11,17 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label 'Date' %>
+          <%= f.label :date %>
           <%= f.date_field :date,  class: "form-control" %><br />
         </div>
 
         <div class="form-group">
-          <%= f.label 'Rationale' %>
+          <%= f.label :overtime_request %>
+          <%= f.number_field :overtime_request, step: 0.5, class: "form-control" %><br />
+        </div>
+
+        <div class="form-group">
+          <%= f.label :rationale %>
           <%= f.text_area :rationale, class: "form-control" %>
         </div>
 
