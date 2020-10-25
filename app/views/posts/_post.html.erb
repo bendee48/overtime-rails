@@ -18,9 +18,13 @@
     <%= status_tag(post.status) %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_post_path(post), id: "edit-#{post.id}" if policy(post).update? %>
+    <%= link_to edit_post_path(post), id: "edit-#{post.id}" do %>
+      <%= fa_icon "edit 2x" %>
+    <% end if policy(post).update? %>
   </td>
   <td>
-    <%= link_to 'Delete', post_path(post), id: "delete-from-index-#{post.id}", method: :delete, data: { confirm: 'Are you sure?'} %>
+    <%= link_to post_path(post), id: "delete-from-index-#{post.id}", method: :delete, data: { confirm: 'Are you sure?'} do %>
+      <%= fa_icon "trash 2x" %>
+    <% end %>
   </td>
 </tr>
