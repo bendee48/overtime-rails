@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Navigation', type: :feature do
   let(:user) { create(:user) }
+  let!(:post) { create(:post, user_id: user.id) }
 
   before do
     login_as(user, scope: :user)
@@ -19,7 +20,6 @@ RSpec.describe 'Navigation', type: :feature do
     end
 
     it 'displays all posts' do
-      post1 = create(:post, user_id: user.id)
       post2 = create(:post, rationale: "Some more content", user_id: user.id)
       visit posts_path
       expect(page).to have_content(/Some content|Some more content/)
@@ -27,7 +27,6 @@ RSpec.describe 'Navigation', type: :feature do
 
     it 'only displays posts created by current user' do
       user2 = create(:second_user)
-      post1 = create(:post, user_id: user.id)
       post2 = create(:post, user_id: user2.id)
       visit posts_path
       expect(page).to have_content(/DOE, John/)
@@ -69,8 +68,6 @@ RSpec.describe 'Navigation', type: :feature do
   end
 
   describe '#edit' do
-    let!(:post) { create(:post, user_id: user.id) }
-
     it 'can be edited by clicking the edit on index page' do
       visit posts_path
       click_link "edit-#{post.id}"
@@ -98,7 +95,6 @@ RSpec.describe 'Navigation', type: :feature do
 
   describe '#delete' do
     it 'can be deleted' do
-      post = create(:post, user_id: user.id)
       visit posts_path
       click_link "delete-from-index-#{post.id}"
       expect(page.status_code).to eql 200
