@@ -8,7 +8,7 @@ class PostDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo.with_options(searchable: true, searchable_fields: ['id']),
+    user: Field::BelongsTo.with_options(searchable: true, searchable_fields: ['first_name', 'last_name']),
     id: Field::Number,
     status: Field::Select.with_options(searchable: true, collection: [:submitted, :approved, :rejected]),
     date: Field::Date.with_options(searchable: true),
