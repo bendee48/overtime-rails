@@ -4,7 +4,7 @@ module PostsHelper
   end
 
   def labels
-    {'submitted' => 'primary',
+    {'submitted' => 'info',
      'approved' => 'success',
      'rejected' => 'danger'}
   end

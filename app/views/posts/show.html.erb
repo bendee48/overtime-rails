@@ -1,6 +1,20 @@
-<h1>Show Post</h1>
-
-<p><%= @post.id %></p>
-<p><%= @post.date %></p>
-<p><%= @post.rationale %></p>
-<p><%= @post.user_id %></p>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h2><%= @post.rationale %></h2>
+      </div>
+      <div class="card-body">
+        <h5>Overtime Request: <%= @post.overtime_request %></h5>
+        <h5>Employee: <%= @post.user.full_name %></h5>
+        <h5>Date: <%= @post.date %></h5>
+        <h5><%= status_tag(@post.status) %><h5>
+      </div>
+      <div class="card-footer text-muted">
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary" if policy(@post).update? %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
