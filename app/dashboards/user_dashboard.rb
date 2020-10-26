@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     posts: Field::HasMany,
     id: Field::Number,
     email: Field::String,
+    phone: Field::String,
     password: Field::String.with_options(searchable: false),
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -43,6 +44,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   email
+  phone
   sign_in_count
   current_sign_in_at
   last_sign_in_at
@@ -63,6 +65,7 @@ class UserDashboard < Administrate::BaseDashboard
   password
   first_name
   last_name
+  phone
   ].freeze
 
   # COLLECTION_FILTERS

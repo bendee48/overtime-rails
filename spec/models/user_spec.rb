@@ -5,15 +5,23 @@ RSpec.describe User, type: :model do
 
   describe 'creation' do
     context 'when valid' do
-      it 'is created with valid attributes' do
+      it 'is valid attributes with valid attributes' do
         expect(user).to be_valid
       end
     end
 
     context 'when invalid' do
-      it 'is not created without first and last name' do
+      it 'is invalid without a first name' do
         user.first_name = nil
+        expect(user).to_not be_valid
+      end
+
+      it 'is invalid without a last name' do
         user.last_name = nil
+        expect(user).to_not be_valid
+      end
+      it 'is invalid without a phone number' do
+        user.phone = nil
         expect(user).to_not be_valid
       end
     end

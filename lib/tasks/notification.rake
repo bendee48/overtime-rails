@@ -3,5 +3,4 @@ namespace :notification do
   task sms: :environment do
     puts "I'm in a Rake task #{Post.count}"
   end
-
 end
