@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name  { 'Doe' }
     email { Faker::Internet.unique.email }
     password { 'password' }
-    phone { '+447777777777' }
+    phone { '07777777777' }
   end
 
   factory :second_user, class: 'User' do
@@ -12,7 +12,7 @@ FactoryBot.define do
     last_name  { 'User' }
     email { Faker::Internet.unique.email }
     password { 'password' }
-    phone { '+4466666666666' }
+    phone { '06666666666' }
   end
 
   factory :admin_user, class: 'AdminUser' do
@@ -20,6 +20,6 @@ FactoryBot.define do
     last_name  { 'User' }
     email { 'admin@email.com' }
     password { 'password' }
-    phone { '+4455555555555' }
+    phone { '05555555555' }
   end
 end
