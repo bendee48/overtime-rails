@@ -12,9 +12,14 @@ puts '2 Users created.'
 AdminUser.create(first_name: 'Admin', last_name: 'User', email: 'admin@email.com', password: 'password')
 puts '1 Admin User created'
 
-10.times do |num|
+5.times do |num|
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user1.id, overtime_request: 2.5)
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 0.5)
 end
 
-puts '20 posts created.'
+3.times do |num|
+  Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 2.5, status: "approved")
+  Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 2.5, status: "rejected")
+end
+
+puts '16 posts created.'

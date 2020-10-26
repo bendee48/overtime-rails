@@ -37,6 +37,7 @@ gem 'administrate', '~> 0.14.0'
 gem 'bourbon', '~> 7.0'
 gem 'pundit', '~> 2.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+gem 'twilio-ruby', '~> 5.41'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
