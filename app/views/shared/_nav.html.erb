@@ -4,6 +4,9 @@
     <li class="nav-item">
       <%= link_to 'Time Entries', posts_path, class: "nav-link #{active?(posts_path)}"%>
     </li>
+
+    <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
+
     <li class="nav-item">
       <%= link_to 'New Post', new_post_path, class: "nav-link #{active?(new_post_path)}", id: 'new-post-nav' %>
     </li>
