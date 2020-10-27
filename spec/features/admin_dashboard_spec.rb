@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin' do
+RSpec.describe 'Admin', type: :feature do
   describe 'admin dashboard' do
     let(:user) { create(:user) }
 

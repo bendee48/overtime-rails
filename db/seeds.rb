@@ -9,22 +9,28 @@ user1 = User.create!(first_name: 'Bob',
                      last_name: 'Holness',
                      email: 'test@email.com',
                      password: 'password',
-                     phone: '+445555555555')
+                     phone: '05555555555')
 
 user2 = User.create!(first_name: 'Emma',
                      last_name: 'Quill',
                      email: 'emma@email.com',
                      password: 'password',
-                     phone: '+447777777777')
+                     phone: '07777777777')
 
 puts '2 Users created.'
 
-AdminUser.create(first_name: 'Admin', last_name: 'User', email: 'admin@email.com', password: 'password')
+AdminUser.create!(first_name: 'Admin',
+                  last_name: 'User',
+                  email: 'admin@email.com',
+                  password: 'password',
+                  phone: '09999999999')
+                  
 puts '1 Admin User created'
 
 5.times do |num|
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user1.id, overtime_request: 2.5)
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 0.5)
+  AuditLog.create!(user_id: user2.id)
 end
 
 3.times do |num|
@@ -33,3 +39,4 @@ end
 end
 
 puts '16 posts created.'
+puts '5 audit logs created.'

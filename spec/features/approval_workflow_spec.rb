@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Approval' do
+RSpec.describe 'Approval', type: :feature do
   let(:user) { create(:user) }
   let!(:post) { create(:post, user_id: user.id, status: 'approved') }
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static#homepage'
-  resources :audit_logs
+  resources :audit_logs, only: [:show, :index]
   resources :posts
   devise_for :users, skip: [:registrations]
   

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Navigation', type: :feature do
+RSpec.describe 'Post', type: :feature do
   let(:user) { create(:user) }
   let!(:post) { create(:post, user_id: user.id) }
 
