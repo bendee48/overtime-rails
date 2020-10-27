@@ -27,13 +27,13 @@ AdminUser.create!(first_name: 'Admin',
                   
 puts '1 Admin User created'
 
-5.times do |num|
+20.times do |num|
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user1.id, overtime_request: 2.5)
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 0.5)
   AuditLog.create!(user_id: user2.id)
 end
 
-3.times do |num|
+5.times do |num|
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 2.5, status: "approved")
   Post.create!(date: Date.today, rationale: "#{num} rationale content", user_id: user2.id, overtime_request: 2.5, status: "rejected")
 end
