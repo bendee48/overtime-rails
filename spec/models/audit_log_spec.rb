@@ -24,13 +24,16 @@ RSpec.describe AuditLog, type: :model do
         audit_log.start_date = nil
         expect(audit_log).to_not be_valid
       end
-    end
-  end
 
-  describe 'create' do
-    it 'has a start date 6 days ago' do
-      audit_log2 = AuditLog.create(user_id: user.id)
-      expect(audit_log2.start_date).to eql Date.today - 6.days
+      it 'is invalid with a start date less than 6 days ago' do
+        audit_log.start_date = Date.today - 4.days
+        expect(audit_log).to_not be_valid
+      end
+
+      it 'is invalid with a start date greater than 6 days ago' do
+        audit_log.start_date = Date.today - 8.days
+        expect(audit_log).to_not be_valid
+      end
     end
   end
 end
