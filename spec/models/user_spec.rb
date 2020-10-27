@@ -4,13 +4,11 @@ RSpec.describe User, type: :model do
   subject(:user) { build_stubbed(:user) }
 
   describe 'validations' do
-    context 'when valid' do
-      it 'is valid with valid attributes' do
-        expect(user).to be_valid
-      end
+    context 'with valid attributes' do
+      it { is_expected.to be_valid }
     end
 
-    context 'when invalid' do
+    context 'with invalid attributes' do
       it 'is invalid without a first name' do
         user.first_name = nil
         expect(user).to_not be_valid
