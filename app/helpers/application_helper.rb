@@ -7,6 +7,16 @@ module ApplicationHelper
     content_tag(:span, "#{status.capitalize}", class: "badge badge-#{labels[status]}")
   end
 
+  def admin?
+    admin_types.include?(current_user.type)
+  end
+
+  private
+
+  def admin_types
+    ['AdminUser']
+  end
+
   def labels
     {'submitted' => 'info',
      'approved' => 'success',

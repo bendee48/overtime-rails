@@ -1,0 +1,19 @@
+<div class="row row-cols-1 row-cols-md-4">
+  <% @pending_approvals.each do |pending_approval| %>
+    <div class="col mb-4">
+      <div class="card h-100 border-success">
+        <div class="card-header">
+          <h5><%= pending_approval.user.full_name %></h5>
+        </div>
+        <div class="card-body">
+          <p><span class="font-weight-bold">Date Submitted:</span> <%= pending_approval.date %></p>
+          <p><span class="font-weight-bold">Rationale:</span> <%= truncate(pending_approval.rationale, length: 32) %></p>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to 'Approve', root_path, class: "btn btn-success mr-2" %>
+          <%= link_to 'Review', root_path, class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
