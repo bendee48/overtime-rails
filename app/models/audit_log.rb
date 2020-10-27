@@ -1,5 +1,6 @@
 class AuditLog < ApplicationRecord
   belongs_to :user
+  enum status: { pending: 0, confirmed: 1 }
   validates_presence_of :status, :start_date
   validate :start_date_must_be_six_days_ago
   after_initialize :set_start_date
