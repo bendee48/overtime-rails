@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :get_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_post, only: [:show, :edit, :update, :destroy, :approve]
 
   def index
     @posts = Post.all_posts_of(current_user).page(params[:page]).per(10)
@@ -7,6 +7,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+  end
+
+  def approve
+    authorize @post
+    
+    @post.approved!
+    sweetalert('Overtime has been approved.', 'Approved', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+    redirect_to root_path
   end
 
   def create

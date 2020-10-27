@@ -3,6 +3,10 @@ class PostPolicy < ApplicationPolicy
     (owned? && pending?) || admin?    
   end
 
+  def approve?
+    admin?
+  end
+
   private
 
   def owned?
