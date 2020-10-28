@@ -1,5 +1,5 @@
 <h2>Pending your Confirmation</h2>
 <% @pending_audit_confirmations.each do |audit| %>
-  <%= link_to "I confirm I did not perform any overtime for, week starting: #{audit.start_date}", root_path, 
-      class: "btn btn-primary mt-1", data: { confirm: "Are you sure you want to confirm you didn't complete any overtime?" } %>
+  <%= link_to "I confirm I did not perform any overtime for, week starting: #{audit.start_date}", confirm_audit_log_path(audit), 
+      class: "btn btn-primary mt-1", id: "audit-log-confirm#{audit.id}", data: { confirm: "Are you sure you want to confirm you didn't complete any overtime?" } %>
 <% end %>
