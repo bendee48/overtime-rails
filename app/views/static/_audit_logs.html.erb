@@ -1,0 +1,22 @@
+<div class="row row-cols-1 row-cols-md-4 approvals">
+  <% @audit_logs.each do |audit_log| %>
+    <div class="col mb-4">
+      <div class="card h-100 border-info">
+        <div class="card-header">
+          <h6><%= audit_log.user.full_name %></h6>
+        </div>
+        <div class="card-body">
+          <p><span class="font-weight-bold">Week Starting:</span> <%= audit_log.start_date %></p>
+          <p><span class="font-weight-bold">Confirmed at:</span> <%= audit_log.end_date || status_tag('pending') %></p>
+          <p><span class="font-weight-bold">Status:</span> <%= status_tag(audit_log.status) %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex align-items-center" id="view-all-button">
+  <div class="m-auto">
+    <%= link_to 'View all', audit_logs_path, class: "btn btn-lg btn-info" %>
+  </div>
+</div>
