@@ -32,7 +32,7 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
 20.times do |num|
   Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: user1.id, overtime_request: 2.5)
   Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: user2.id, overtime_request: 0.5)
-  AuditLog.create!(user_id: user2.id)
+  #AuditLog.create!(user_id: user2.id)
 end
 
 5.times do |num|
@@ -40,5 +40,9 @@ end
   Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: user2.id, overtime_request: 2.5, status: "rejected")
 end
 
+AuditLog.create!(user_id: user2.id)
+AuditLog.create!(user_id: user2.id, start_date: Date.today - 13.days)
+AuditLog.create!(user_id: user2.id, start_date: Date.today - 20.days)
+
 puts '16 posts created.'
-puts '5 audit logs created.'
+puts '3 audit logs created.'
