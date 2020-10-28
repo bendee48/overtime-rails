@@ -8,7 +8,7 @@
     <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
 
     <li class="nav-item">
-      <%= link_to 'Request Overtime', new_post_path, class: "nav-link #{active?(new_post_path)}", id: 'new-post-nav' %>
+      <%= link_to 'Register Overtime', new_post_path, class: "nav-link #{active?(new_post_path)}", id: 'new-post-nav' %>
     </li>
     <li class="nav-item ml-auto">
       <span class="nav-link"><%= "#{current_user.full_name if current_user}" %></span>
