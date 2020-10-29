@@ -1,7 +1,17 @@
+include Rails.application.routes.url_helpers
+
 namespace :notification do
   desc "Sends SMS notification to employees asking them to log any overtime"
   task sms: :environment do
-    puts "I'm in a Rake task #{Post.count}"
+    if Date.today.sunday?
+      employees = Employee.all
+      message = "Please log onto the overtime management app to request overtime or confirm your hours for last week: #{"https://overtime-app-123.herokuapp.com"}"
+      
+      employees.each do |employee|
+        SmsTool.send_sms(message: message, number: employee.phone)
+      end
+      puts "SMS sent."
+    end
   end
 
   desc "Sends email to manager (admin user) about pending overtime requests"
