@@ -1,7 +1,7 @@
 <div class="row row-cols-1 row-cols-md-4 approvals">
   <% @pending_approvals.each do |pending_approval| %>
     <div class="col mb-4">
-      <div class="card h-100 border-secondary">
+      <div class="card h-100 border-secondary approval-card">
         <div class="card-header">
           <h5><%= pending_approval.user.full_name %></h5>
         </div>
