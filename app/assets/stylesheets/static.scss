@@ -1,3 +1,8 @@
+.jumbotron {
+  min-height: 225px;
+  padding-top: 5%;
+}
+
 .approvals {
   margin-top: 3%;
   margin-bottom: 3%;
@@ -15,7 +20,7 @@
   transform: scale(1.05, 1.05);
 }
 
-.jumbotron {
-  min-height: 225px;
-  padding-top: 5%;
+.audit-card-header {
+  background-color: rgb(125, 134, 255);
 }
+

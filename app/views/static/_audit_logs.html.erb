@@ -1,8 +1,8 @@
 <div class="row row-cols-1 row-cols-md-4 approvals">
   <% @audit_logs.each do |audit_log| %>
     <div class="col mb-4">
-      <div class="card h-100 border-info">
-        <div class="card-header">
+      <div class="card h-100 border-primary">
+        <div class="card-header audit-card-header">
           <h6><%= audit_log.user.full_name %></h6>
         </div>
         <div class="card-body">
