@@ -11,6 +11,10 @@ module ApplicationHelper
     admin_types.include?(current_user.type)
   end
 
+  def employee?
+    current_user.type == 'Employee'
+  end
+
   private
 
   def admin_types

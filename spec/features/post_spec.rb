@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Post', type: :feature do
-  let(:user) { create(:user) }
-  let!(:post) { create(:post, user_id: user.id) }
+  let(:employee) { create(:employee) }
+  let!(:post) { create(:post, user_id: employee.id) }
 
   before do
-    login_as(user, scope: :user)
+    login_as(employee, scope: :user)
   end
 
   describe '#index' do
@@ -20,16 +20,16 @@ RSpec.describe 'Post', type: :feature do
     end
 
     it 'displays all posts' do
-      post2 = create(:post, rationale: "Some more content", user_id: user.id)
+      post2 = create(:post, rationale: "Some more content", user_id: employee.id)
       visit posts_path
       expect(page).to have_content(/Some content|Some more content/)
     end
 
     it 'only displays posts created by current user' do
-      user2 = create(:second_user)
-      post2 = create(:post, user_id: user2.id)
+      employee_2 = create(:employee_2)
+      post2 = create(:post, user_id: employee_2.id)
       visit posts_path
-      expect(page).to have_content(/DOE, John/)
+      expect(page).to have_content(/ROSEN, Michael/)
       expect(page).to_not have_content(/USER, Second/)
     end
   end
@@ -85,9 +85,9 @@ RSpec.describe 'Post', type: :feature do
     end
 
     it 'can only be edited by owner or admin' do
-      logout user
-      user2 = create(:user, first_name: "Second", last_name: "User")
-      login_as(user2, scope: :user)
+      logout employee
+      employee_2 = create(:employee_2)
+      login_as(employee_2, scope: :user)
       visit edit_post_path(post)
       expect(current_path).to eql posts_path
     end

@@ -1,25 +1,18 @@
 <ul class="custom-nav nav nav-pills mb-5">
   <%= link_to 'OverTime', root_path, class: "navbar-brand home-brand h1" %>
-  <% if current_user %>
-    <li class="nav-item">
-      <%= link_to 'Time Entries', posts_path, class: "nav-link #{active?(posts_path)}"%>
+  <% if user_signed_in? %>
+    <%= render 'shared/employee_nav_items' if employee? %>
+
+    <%= render 'shared/audit_log_tab' if admin? %>
+
+    <li class="nav-item mr-0 ml-auto">
+      <span class="nav-link"><%= current_user.full_name %></span>
     </li>
 
-    <%= render 'shared/audit_log_tab' if policy(AuditLog).index? %>
-
-    <li class="nav-item">
-      <%= link_to 'Register Overtime', new_post_path, class: "nav-link #{active?(new_post_path)}", id: 'new-post-nav' %>
-    </li>
-    <li class="nav-item ml-auto">
-      <span class="nav-link"><%= "#{current_user.full_name if current_user}" %></span>
-    </li>
-    <li class="nav-item dropdown ml-md-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">Account</a>
+    <li class="nav-item dropdown ml-md-0">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">Account</a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-        <% if current_user.try(:type) == 'AdminUser' %>
-          <%= link_to 'Admin', admin_root_path, class: 'dropdown-item' %>
-          <div class="dropdown-divider"></div> 
-        <% end %>
+        <%= render 'shared/admin_dropdown' if admin? %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
       </div>
     </li>

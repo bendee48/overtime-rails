@@ -7,9 +7,17 @@ FactoryBot.define do
     phone { '07777777777' }
   end
 
-  factory :second_user, class: 'User' do
+  factory :employee, class: 'Employee' do
+    first_name { 'Michael' }
+    last_name  { 'Rosen' }
+    email { 'mike@email.com' }
+    password { 'password' }
+    phone { '02222222222' }
+  end
+
+  factory :employee_2, class: 'Employee' do
     first_name { 'Second' }
-    last_name  { 'User' }
+    last_name  { 'Employee' }
     email { Faker::Internet.unique.email }
     password { 'password' }
     phone { '06666666666' }
