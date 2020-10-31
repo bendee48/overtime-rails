@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static#homepage'
+  devise_for :users, skip: [:registrations]
+
   resources :audit_logs, only: [:show, :index] do
     get 'confirm', on: :member
   end
@@ -7,8 +9,7 @@ Rails.application.routes.draw do
   resources :posts do
     get 'approve', on: :member
   end
-  devise_for :users, skip: [:registrations]
-  
+
   namespace :admin do
     resources :users
     resources :admin_users
