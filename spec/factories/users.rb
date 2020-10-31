@@ -5,6 +5,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password' }
     phone { '07777777777' }
+    ssn { 1234 }
+    company { 'Das Company' }
   end
 
   factory :employee, class: 'Employee' do
@@ -13,6 +15,8 @@ FactoryBot.define do
     email { 'mike@email.com' }
     password { 'password' }
     phone { '02222222222' }
+    ssn { 1234 }
+    company { 'Das Company' }
   end
 
   factory :employee_2, class: 'Employee' do
@@ -21,6 +25,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { 'password' }
     phone { '06666666666' }
+    ssn { 1234 }
+    company { 'Das Company' }
   end
 
   factory :admin_user, class: 'AdminUser' do
@@ -29,5 +35,7 @@ FactoryBot.define do
     email { 'admin@email.com' }
     password { 'password' }
     phone { '05555555555' }
+    ssn { 1234 }
+    company { 'Das Company' }
   end
 end

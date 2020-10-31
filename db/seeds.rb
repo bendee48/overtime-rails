@@ -9,13 +9,17 @@ employee1 = Employee.create!(first_name: 'Bob',
                      last_name: 'Holness',
                      email: 'test@email.com',
                      password: 'password',
-                     phone: '05555555555')
+                     phone: '05555555555',
+                     ssn: 1234,
+                     company: "The Company")
 
 employee2 = Employee.create!(first_name: 'Emma',
                      last_name: 'Quill',
                      email: 'emma@email.com',
                      password: 'password',
-                     phone: '07777777777')
+                     phone: '07777777777',
+                     ssn: 1234,
+                     company: "The Company")
 
 puts '2 Employees created.'
 
@@ -23,7 +27,9 @@ AdminUser.create!(first_name: 'Admin',
                   last_name: 'User',
                   email: 'admin@email.com',
                   password: 'password',
-                  phone: '09999999999')
+                  phone: '09999999999',
+                  ssn: 1234,
+                  company: "The Company")
                   
 puts '1 Admin User created'
 

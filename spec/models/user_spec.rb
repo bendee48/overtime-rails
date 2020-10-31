@@ -29,13 +29,38 @@ RSpec.describe User, type: :model do
         expect(user).to_not be_valid
       end
 
-      it 'is invalid if phone is more than 11 chars' do
+      it 'is invalid if phone is greater than 11 chars' do
         user.phone = '777777777777'
         expect(user).to_not be_valid
       end
 
       it 'is invalid if phone is less than 11 chars' do
         user.phone = '7777777777'
+        expect(user).to_not be_valid
+      end
+
+      it 'is invalid without ssn number' do
+        user.ssn = nil
+        expect(user).to_not be_valid
+      end
+      
+      it 'is invalid if ssn is not an integer' do
+        user.ssn = '333g'
+        expect(user).to_not be_valid
+      end
+
+      it 'is invalid if ssn is greater than 4 chars' do
+        user.ssn = 12345
+        expect(user).to_not be_valid
+      end
+
+      it 'is invalid if ssn is less than 4 chars' do
+        user.ssn = 123
+        expect(user).to_not be_valid
+      end
+
+      it 'is invalid without a company' do
+        user.company = nil
         expect(user).to_not be_valid
       end
     end

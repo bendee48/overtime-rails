@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_many :hands_associations, class_name: 'Hand'
   has_many :hands, through: :hands_associations
 
-  validates_presence_of :first_name, :last_name, :phone
+  validates_presence_of :first_name, :last_name, :phone, :ssn, :company
+
+  validates :ssn, length: { is: 4 }, numericality: { only_integer: true }
   
   PHONE_REGEX = /\A\d+\z/
   validates :phone, format: { with: PHONE_REGEX }, length: { is: 11 }

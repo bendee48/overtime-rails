@@ -12,7 +12,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     email: Field::String,
     phone: Field::String,
-    password: Field::String,
+    password: Field::String.with_options(searchable: false),
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
     remember_created_at: Field::DateTime,
@@ -26,6 +26,8 @@ class AdminUserDashboard < Administrate::BaseDashboard
     type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    ssn: Field::Number.with_options(searchable: true),
+    company: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,9 +37,11 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   posts
+  ssn
   first_name
   last_name
   email
+  company
   type
   ].freeze
 
@@ -45,7 +49,9 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
+  ssn
   email
+  company
   phone
   sign_in_count
   current_sign_in_at
@@ -63,7 +69,9 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+  ssn
   email
+  company
   password
   first_name
   last_name

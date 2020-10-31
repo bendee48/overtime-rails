@@ -26,6 +26,8 @@ class UserDashboard < Administrate::BaseDashboard
     type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    ssn: Field::Number.with_options(searchable: true),
+    company: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,7 +47,9 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
+  ssn
   email
+  company
   phone
   sign_in_count
   current_sign_in_at
@@ -63,7 +67,9 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+  ssn
   email
+  company
   password
   first_name
   last_name
