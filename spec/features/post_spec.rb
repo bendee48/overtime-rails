@@ -22,15 +22,16 @@ RSpec.describe 'Post', type: :feature do
     it 'displays all posts' do
       post2 = create(:post, work_performed: "Some more content", user_id: employee.id)
       visit posts_path
-      expect(page).to have_content(/Some content|Some more content/)
+      expect(page).to have_content("Some content")
+      expect(page).to have_content("Some more content")
     end
 
     it 'only displays posts created by current user' do
       employee_2 = create(:employee_2)
       post2 = create(:post, user_id: employee_2.id)
       visit posts_path
-      expect(page).to have_content(/ROSEN, Michael/)
-      expect(page).to_not have_content(/USER, Second/)
+      expect(page).to have_text("ROSEN, Michael")
+      expect(page).to_not have_text("USER, Second")
     end
   end
 
