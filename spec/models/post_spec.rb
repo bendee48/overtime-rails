@@ -19,8 +19,8 @@ RSpec.describe Post, type: :model do
         expect(post).to_not be_valid
       end
 
-      it 'is invalid without a rationale' do
-        post.rationale = nil
+      it 'is invalid without work performed' do
+        post.work_performed = nil
         expect(post).to_not be_valid
       end
 

@@ -20,7 +20,7 @@ RSpec.describe 'Post', type: :feature do
     end
 
     it 'displays all posts' do
-      post2 = create(:post, rationale: "Some more content", user_id: employee.id)
+      post2 = create(:post, work_performed: "Some more content", user_id: employee.id)
       visit posts_path
       expect(page).to have_content(/Some content|Some more content/)
     end
@@ -45,7 +45,7 @@ RSpec.describe 'Post', type: :feature do
 
     it 'is created from new form page' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: 'rationale content'
+      fill_in 'post[work_performed]', with: 'work performed content'
       fill_in 'post[daily_hours]', with: 2.5
 
       expect { click_on 'Submit' }.to change { Post.count }.by(1)
@@ -53,12 +53,12 @@ RSpec.describe 'Post', type: :feature do
 
     it 'will have a user associated to it' do
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: 'associated user'
+      fill_in 'post[work_performed]', with: 'associated user'
       fill_in 'post[daily_hours]', with: 2.5
 
       click_on 'Submit'
 
-      expect(User.last.posts.last.rationale).to eql 'associated user'
+      expect(User.last.posts.last.work_performed).to eql 'associated user'
     end
 
     it 'has a link in the navbar' do
@@ -77,7 +77,7 @@ RSpec.describe 'Post', type: :feature do
     it 'can be edited' do
       visit edit_post_path(post)
       fill_in 'post[date]', with: Date.today
-      fill_in 'post[rationale]', with: 'edited content'
+      fill_in 'post[work_performed]', with: 'edited content'
 
       click_on 'Submit'
 
