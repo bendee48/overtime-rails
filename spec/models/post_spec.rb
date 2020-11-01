@@ -24,13 +24,13 @@ RSpec.describe Post, type: :model do
         expect(post).to_not be_valid
       end
 
-      it 'is invalid without an overtime_request' do
-        post.overtime_request = nil
+      it 'is invalid without a daily_hours attr' do
+        post.daily_hours = nil
         expect(post).to_not be_valid
       end
 
-      it 'is invalid with 0 overtime hours' do
-        post.overtime_request = 0.0
+      it 'is invalid with 0 hours' do
+        post.daily_hours = 0.0
         expect(post).to_not be_valid
       end
     end

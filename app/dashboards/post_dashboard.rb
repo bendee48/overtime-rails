@@ -13,7 +13,7 @@ class PostDashboard < Administrate::BaseDashboard
     status: Field::Select.with_options(searchable: true, collection: [:submitted, :approved, :rejected]),
     date: Field::Date.with_options(searchable: true),
     rationale: Field::Text.with_options(searchable: true),
-    overtime_request: Field::Number.with_options(searchable: true),
+    daily_hours: Field::Number.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,7 +28,7 @@ class PostDashboard < Administrate::BaseDashboard
   user
   status
   date
-  overtime_request
+  daily_hours
   rationale
   ].freeze
 

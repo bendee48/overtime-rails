@@ -8,7 +8,7 @@ class AuditLogsController < ApplicationController
     @audit_log = AuditLog.find(params[:id])
     authorize @audit_log
     @audit_log.confirmed!
-    sweetalert('Overtime has been confirmed.', 'Confirmed', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+    sweetalert('Hours have been confirmed.', 'Confirmed', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
     redirect_to root_path
   end
 

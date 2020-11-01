@@ -36,14 +36,14 @@ puts '1 Admin User created'
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 20.times do |num|
-  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee1.id, overtime_request: 2.5)
-  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, overtime_request: 0.5)
+  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee1.id, daily_hours: 8.5)
+  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, daily_hours: 7.5)
   #AuditLog.create!(user_id: user2.id)
 end
 
 5.times do |num|
-  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, overtime_request: 2.5, status: "approved")
-  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, overtime_request: 2.5, status: "rejected")
+  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, daily_hours: 10.5, status: "approved")
+  Post.create!(date: Date.today, rationale: "#{num}: #{text}", user_id: employee2.id, daily_hours: 9.5, status: "rejected")
 end
 
 AuditLog.create!(user_id: employee2.id)

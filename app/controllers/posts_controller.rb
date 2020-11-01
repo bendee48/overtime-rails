@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     authorize @post
     
     @post.approved!
-    sweetalert('Overtime has been approved.', 'Approved', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+    sweetalert('Hours have been approved.', 'Approved', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
     redirect_to root_path
   end
 
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:date, :rationale, :status, :overtime_request)
+    params.require(:post).permit(:date, :rationale, :status, :daily_hours)
   end
 
   def get_post

@@ -46,7 +46,7 @@ RSpec.describe 'Post', type: :feature do
     it 'is created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'rationale content'
-      fill_in 'post[overtime_request]', with: 2.5
+      fill_in 'post[daily_hours]', with: 2.5
 
       expect { click_on 'Submit' }.to change { Post.count }.by(1)
     end
@@ -54,7 +54,7 @@ RSpec.describe 'Post', type: :feature do
     it 'will have a user associated to it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'associated user'
-      fill_in 'post[overtime_request]', with: 2.5
+      fill_in 'post[daily_hours]', with: 2.5
 
       click_on 'Submit'
 

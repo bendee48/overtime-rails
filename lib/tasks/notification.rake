@@ -1,11 +1,11 @@
 include Rails.application.routes.url_helpers
 
 namespace :notification do
-  desc "Sends SMS notification to employees asking them to log any overtime"
+  desc "Sends SMS notification to employees asking them to log hours"
   task sms: :environment do
     if Date.today.sunday?
       employees = Employee.all
-      message = "Please log onto the overtime management app to request overtime or confirm your hours for last week: #{"https://overtime-app-123.herokuapp.com"}"
+      message = "Please log onto the daily hours management app to confirm your hours for last week: #{"https://overtime-app-123.herokuapp.com"}"
       
       employees.each do |employee|
         AuditLog.create!(user_id: employee.id)
@@ -15,7 +15,7 @@ namespace :notification do
     end
   end
 
-  desc "Sends email to manager (admin user) about pending overtime requests"
+  desc "Sends email to manager (admin user) about daily hours"
   task manager_email: :environment do
     admin_users = AdminUser.all
 
