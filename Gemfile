@@ -33,6 +33,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'jquery-rails'
 # Flash messages
 gem 'sweetify', '~> 2.0'
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'administrate', '~> 0.14.0'
 gem 'bourbon', '~> 7.0'
 gem 'pundit', '~> 2.1'

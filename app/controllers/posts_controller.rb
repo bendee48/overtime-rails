@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     authorize @post
     
     @post.approved!
-    sweetalert('Hours have been approved.', 'Approved', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+    flash.notice = "Hours have been approved."
     redirect_to root_path
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      sweetalert('Your post has been added.', 'Post Created', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+      flash.notice = "Thanks. Your hours have been added."
       redirect_to @post
     else
       render :new 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     authorize @post
     
     if @post.update(post_params)
-      sweetalert('Your post has been updated.', 'Post Updated', timer: 3000, position: 'top-end', toast: true, icon: 'success', background: '#EEEEFF')
+      flash.notice = "Your post has been updated."
       redirect_to @post
     else
       flash.now.alert = "Something went wrong"
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      sweetalert('Your post has been deleted.', 'Post Deleted', timer: 3000, position: 'top-end', toast: true, icon: 'error', background: '#EEEEFF')
+      flash.alert = "Your post has been deleted."
       redirect_to posts_path
     else
       flash.now.alert = "Something went wrong"
