@@ -10,3 +10,9 @@ overtime completed that week. While admin users have the ability to approve or r
 The main aim of this project was to produce an effective test suite for a Rails App via TDD and BDD, using RSpec, Factories (FactoryBot), Faker, DB cleaner, Model and Request specs.
 
 The actual project premise was taken from this course found on [Udemy](https://www.udemy.com/course/professional-ruby-on-rails-coding-course/learn/lecture/5474690#overview)
+
+---
+
+Live Version
+[Overtime App](https://overtime-app-123.herokuapp.com/)
+
