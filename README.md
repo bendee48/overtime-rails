@@ -1,24 +1,12 @@
-# README
+### Overtime App - Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**A business app used for logging and managing overtime hours.**
 
-Things you may want to cover:
+---
 
-* Ruby version
+This is a project mimicking an app for logging and managing overtime. Users (employees) have the ability to log their
+overtime completed that week. While admin users have the ability to approve or reject requested overtime.
 
-* System dependencies
+The main aim of this project was to produce an effective test suite for a Rails App via TDD and BDD, using RSpec, Factories (FactoryBot), Faker, DB cleaner, Model and Request specs.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The actual project premise was taken from this course found on [Udemy](https://www.udemy.com/course/professional-ruby-on-rails-coding-course/learn/lecture/5474690#overview)
